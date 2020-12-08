@@ -74,7 +74,7 @@ def eval_split(loader, model, crit, split, opt):
       scores, sub_grid_attn, sub_attn, loc_attn, rel_attn, rel_ixs, weights, att_scores, att_loss = \
         model(Feats['pool5'], Feats['fc7'], Feats['lfeats'], Feats['dif_lfeats'], 
               Feats['cxt_fc7'], Feats['cxt_lfeats'],
-              expanded_labels, img_fc7=Feats['img_fc7']) 
+              expanded_labels, img_pool5=Feats['img_fc7'])  # img_fc7=Feats['img_fc7'] 
       scores = scores.data.cpu().numpy()
       att_scores = F.sigmoid(att_scores) # (n, num_atts)
       rel_ixs = rel_ixs.data.cpu().numpy().tolist() # (n, )
